@@ -33,6 +33,19 @@
             text-align: center;
             color: #333;
         }
+		  .sbox {
+				display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Evenly spaces the sections */
+            height: 100%; /* Ensures the box uses the full height of its container */
+            padding: 20px; /* Optional padding inside the box */
+            width: 350px; /* Set width as needed */
+				height: 600px;
+            background-color: #f0f0f0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+				text-align: center;
+		  }
         /* Center content box styling */
         .center-box {
 				width: 600px;
@@ -45,6 +58,9 @@
             border-radius: 10px;
             margin: 0 10px;
         }
+		  .section {
+
+		  }
         .profile-pic {
             width: 300px;
             height: 280px;
@@ -57,19 +73,44 @@
         p {
             color: #666;
         }
+		  ul {
+           list-style-type: disc; /* Default bullet style */
+           padding-left: 20px; /* Add some left padding */
+       }
+       
+       li {
+           margin: 5px 0; /* Add some space between list items */
+			  text-align: left;
+       }
+
     </style>
 </head>
 <body>
 
 <div class="main-container">
-	<div class="side-box">
-	   <h2>Building Particle Physics</h2>
-		<a href="https://indico.cern.ch/event/1339557/contributions/5898508/">SuperFGD: Design, Assembly and Commissioning</a>
+	<div class="sbox">
+	      <h2 style="color: purple;">Education</h2>
+		   <ul>
+            <li>BS: Electrical Engineering</li>
+            <li>Master: Physics</li>
+            <li>PhD: Physics</li>
+         </ul>
+	      <h2 style="color: green;">Experience</h2>
+			<h3>MINERvA Experiment</h3>
+		   <ul>
+            <li>Computing coordinator</li>
+            <li>Detector expert (MINERvA and MINOS)</li>
+         </ul>
+			<h3>T2K Experiment</h3>
+		   <ul>
+            <li>Design and deployment of SuperFGD electronics</li>
+            <li>SuperFGD installation</li>
+         </ul>
 	</div>
 	<div class="center-box">
       <img src="DSCF0764.jpeg" alt="Alejandro Ramírez" class="profile-pic">
       <h1>Alejandro Ramírez</h1>
-      <p><strong>Particle Physicist / Software Developer</strong></p>
+      <p><strong>Electrical Engineer / Particle Physicist / Software Developer</strong></p>
       <p>
 			Welcome to my personal webpage! I am a Particle physicist, electrical
 			engineer and software developer.  With a passion for "Creating and
@@ -88,9 +129,15 @@
 	</div>
 	<div class="side-box">
 		<h2>Analysing Particle Physics</h2>
-		<a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.051801">Phys. Rev. Lett. 131, 051801</a>
+		<a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.051801">Phys. Rev. Lett. 131, 051801</a><br><br>
+		<a href="https://www.nature.com/articles/s41586-022-05478-3">Nature volume 614, pages 48–53 (2023)</a><br><br>
+		<a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.130.161801">Phys. Rev. Lett. 130, 161801</a><br><br>
+		<a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.011801">Phys. Rev. Lett. 131, 011801</a><br><br>
+		<a href="https://www.sciencedirect.com/science/article/pii/S0370269323001776?via%3Dihub">Phys. Lett. B (2023)</a><br><br><br><br><br>
+		<h2>Talking About Particle Physics</h2>
+		<a href="https://indico.fnal.gov/event/55494/##1-first-direct-measurement-of">Joint Experimental-Theoretical Physics Seminar (at FNAL) 2022</a><br><br>
+		<a href="https://indico.cern.ch/event/1339557/contributions/5898508/">SuperFGD: Design, Assembly and Commissioning</a><br><br>
 	</div>
 </div>
-
 </body>
 </html>
