@@ -27,7 +27,7 @@
             width: 350px;
             /*flex-grow: 1;*/
             background-color: #f0f0f0;
-            padding: 10px;
+            padding: 20px; /* Increased padding to match the left box's content area */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             text-align: center;
@@ -36,11 +36,12 @@
         .sbox {
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Evenly spaces the sections */
-            height: 100%; /* Ensures the box uses the full height of its container */
-            padding: 20px; /* Optional padding inside the box */
-            width: 350px; /* Set width as needed */
-            height: 620px;
+            justify-content: flex-start; /* Changed to flex-start to keep content at the top */
+            /* height: 100%; <--- Not needed due to align-items: stretch */
+            padding: 20px;
+            width: 350px;
+            /* Remove fixed height, let flexbox stretch it */
+            /* height: 620px; <--- Removed */
             background-color: #f0f0f0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
@@ -91,9 +92,9 @@
     <div class="sbox">
         <h2 style="color: purple; margin-bottom: -10px; font-size: 1.25em;">Education</h2>
         <ul>
-            <li>B.S.: Electrical Engineering</li>
-            <li>Master: Physics</li>
-            <li>PhD: Physics (<a href="https://www.osti.gov/biblio/1638645/">thesis</a>)</li>
+            <li>B.S. on Electrical Engineering</li>
+            <li>Master's on Physics</li>
+            <li>PhD on Physics (<a href="https://www.osti.gov/biblio/1638645/">thesis</a>)</li>
             <li><a href="documents/Coursera_supervisedML_regresion_and_classification.pdf" target="_blank">Machine Learning specialization by Stanford online</a></li>
         </ul>
         <h2 style="color: green; margin-bottom: -10px; font-size: 1.25em;">Experience</h2>
