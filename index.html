@@ -13,98 +13,182 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f9;
+            background-color: #0f172a;
         }
-        /* Main container */
+
+        /* --- PARTICLE BACKGROUND STYLES START --- */
+        .particle-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; 
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #00FF7F;
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow: 
+                0 0 10px #00FF7F, 
+                0 0 20px rgba(0, 255, 127, 0.5),
+                0 0 40px rgba(0, 255, 127, 0.2); 
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            pointer-events: none;
+        }
+
+        /* Dynamically spawned vertical particles */
+        .particle-down-dynamic {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #00FF7F;
+            border-radius: 50%;
+            opacity: 0.9;
+            box-shadow: 
+                0 0 10px #00FF7F, 
+                0 0 20px rgba(0, 255, 127, 0.5),
+                0 0 40px rgba(0, 255, 127, 0.2);
+            pointer-events: none;
+            top: -20px;
+        }
+
+        /* Non-downward background particles */
+        .particle:nth-child(1) { top: 70%; left: -5%; animation: radiate-diag-1 4.5s infinite linear 0.5s; }
+        .particle:nth-child(2) { top: 110%; left: 50%; animation: radiate-up 5.5s infinite linear 1s; }
+        .particle:nth-child(3) { top: 90%; left: -15%; animation: radiate-right 6s infinite linear 1.5s; }
+        .particle:nth-child(4) { top: 105%; left: 90%; animation: radiate-up 4s infinite linear 2s; }
+        .particle:nth-child(5) { top: 20%; left: -10%; animation: radiate-right 5s infinite linear 2.5s; }
+        .particle:nth-child(6) { top: 120%; left: 40%; animation: radiate-up 6.5s infinite linear 3s; }
+        .particle:nth-child(7) { top: 65%; left: -15%; animation: radiate-right 4.5s infinite linear 3.5s; }
+
+        /* Background Particle Animations */
+        @keyframes radiate-diag-1 {
+            0% { transform: translate(0, 0) scale(1); opacity: 0; }
+            1% { opacity: 0.8; }
+            95% { opacity: 0.8; }
+            100% { transform: translate(150vw, 150vh) scale(0.5); opacity: 0; }
+        }
+
+        @keyframes radiate-up {
+            0% { transform: translate(0, 0) scale(1); opacity: 0; }
+            1% { opacity: 0.8; }
+            95% { opacity: 0.8; }
+            100% { transform: translate(0, -150vh) scale(0.7); opacity: 0; }
+        }
+
+        @keyframes radiate-right {
+            0% { transform: translate(0, 0) scale(1); opacity: 0; }
+            1% { opacity: 0.8; }
+            95% { opacity: 0.8; }
+            100% { transform: translate(150vw, 0) scale(0.8); opacity: 0; }
+        }
+        /* --- PARTICLE BACKGROUND STYLES END --- */
+
         .main-container {
             display: flex;
             justify-content: space-around;
             width: 100%;
             max-width: 1400px;
+            z-index: 1;
         }
-        /* Side box styling */
-        .side-box {
+
+        .scintillator-box {
+            transition: background-color 0.05s ease-out, box-shadow 0.05s ease-out, border-color 0.05s ease-out;
+        }
+
+        .side-box, .sbox {
             width: 350px;
-            /*flex-grow: 1;*/
-            background-color: #f0f0f0;
-            padding: 20px; /* Increased padding to match the left box's content area */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #1e293b;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            border: 1px solid #334155;
             border-radius: 10px;
             text-align: center;
-            color: #333;
+            color: #e2e8f0;
         }
+
         .sbox {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Changed to flex-start to keep content at the top */
-            /* height: 100%; <--- Not needed due to align-items: stretch */
-            padding: 20px;
-            width: 350px;
-            /* Remove fixed height, let flexbox stretch it */
-            /* height: 620px; <--- Removed */
-            background-color: #f0f0f0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            text-align: center;
+            justify-content: flex-start;
         }
-        /* Center content box styling */
+
         .center-box {
             width: 600px;
-            /*flex-grow: 2;*/
-            /*max-width: 500px;*/
-            background-color: white;
+            background-color: #243147;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+            border: 1px solid #334155;
             border-radius: 10px;
             margin: 0 10px;
+            color: #e2e8f0;
         }
-        .section {
 
+        /* Scintillation Flashes */
+        .scintillate-side {
+            background-color: #334155 !important;
+            border-color: #00FF7F !important;
+            box-shadow: 0 0 25px rgba(0, 255, 127, 0.35), inset 0 0 15px rgba(0, 255, 127, 0.15) !important;
         }
+
+        .scintillate-center {
+            background-color: #3b4d6b !important;
+            border-color: #00FF7F !important;
+            box-shadow: 0 0 30px rgba(0, 255, 127, 0.4), inset 0 0 20px rgba(0, 255, 127, 0.2) !important;
+        }
+
         .profile-pic {
             width: 470px;
             height: 320px;
             margin-top: 1px;
-            border-radius: 10px; /* Slightly rounded corners */
+            border-radius: 10px;
         }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
+        h1 { color: #f8fafc; }
+        h3, h4 { color: #f1f5f9; }
+        p { color: #cbd5e1; }
+        a { color: #38bdf8; }
+        a:visited { color: #a855f7; }
         ul {
-           list-style-type: disc; /* Default bullet style */
-           padding-left: 20px; /* Add some left padding */
+           list-style-type: disc;
+           padding-left: 20px;
+           color: #cbd5e1;
         }
-       
         li {
-           margin: 5px 0; /* Add some space between list items */
-            text-align: left;
+           margin: 5px 0;
+           text-align: left;
         }
-
     </style>
 </head>
 <body>
 
+<div class="particle-background" id="particle-bg">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+</div>
+
 <div class="main-container">
-    <div class="sbox">
-        <h2 style="color: purple; margin-bottom: -10px; font-size: 1.25em;">Education</h2>
+    <div class="sbox scintillator-box" data-box-type="side">
+        <h2 style="color: #c084fc; margin-bottom: -10px; font-size: 1.25em;">Education</h2>
         <ul>
             <li>B.S. on Electrical Engineering</li>
             <li>Master's on Physics</li>
             <li>PhD on Physics (<a href="https://www.osti.gov/biblio/1638645/">thesis</a>)</li>
-            <li>Machine Learning Specialization by Stanford online (<a href="documents/MachineLearningSpecialization.pdf">certificate</a>)</li>
-            <!--
-            <ul>
-               <li><a href="documents/SupervisedMLRegressionAndClassification.pdf" target="_blank">Supervised Machine Learning</a></li>
-               <li><a href="documents/AdvancedLearningAlgorithms.pdf" target="_blank">Advanced Learning Algorithms</a></li>
-               <li><a href="documents/UnsupervisedAndReinforcementLearning.pdf" target="_blank">Unsupervised and Reinforcement Learning</a></li>
-            </ul>
-            -->
+            <li><a href="documents/Coursera_supervisedML_regresion_and_classification.pdf" target="_blank">Machine Learning specialization by Stanford online</a></li>
         </ul>
-        <h2 style="color: green; margin-bottom: -10px; font-size: 1.25em;">Experience</h2>
+        <h2 style="color: #4ade80; margin-bottom: -10px; font-size: 1.25em;">Experience</h2>
         <h3 style="text-align: left; margin-bottom: 0px;">
             <img src="upenn.png" alt="Icon" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 5px;">
             Postdoctoral Fellow - UPenn
@@ -128,16 +212,12 @@
             <li>SuperFGD installation</li>
         </ul>
     </div>
-    <div class="center-box">
-        <img src="DSCF0764_text.jpeg" alt="Dr. Alejandro Ramírez" class="profile-pic">
-        <h1>
-            <!--<img src="light.png" alt="Icon" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 5px;">-->
-            Dr. Alejandro Ramírez
-            <!--<img src="nucleus_electrons_transparent.png" alt="Icon" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 5px;">-->
-        </h1>
+    <div class="center-box scintillator-box" data-box-type="center">
+        <img src="DSCF0764_text2.jpeg" alt="Dr. Alejandro Ramírez" class="profile-pic">
+        <h1>Dr. Alejandro Ramírez</h1>
         <p><strong>Electrical Engineer / Particle Physicist / Software Developer</strong></p>
         <p>
-            Welcome to my personal webpage! I am an electrical    engineer, particle
+            Welcome to my personal webpage! I am an electrical engineer, particle
             physicist, and software developer, with a passion for "creating and
             analyzing data".  
         </p>
@@ -153,29 +233,92 @@
             <a href="mailto:alexrd@hep.upenn.edu">alexrd@hep.upenn.edu</a>
         </p>
     </div>
-    <div class="side-box">
-        <h2 style="color: purple; font-size: 1.25em;">Analyzing Particle Physics</h2>
+    <div class="side-box scintillator-box" data-box-type="side">
+        <h2 style="color: #c084fc; font-size: 1.25em;">Analyzing Particle Physics</h2>
         <a href="https://www.nature.com/articles/s41586-025-09599-3">Joint neutrino oscillation analysis from the T2K and NOvA experiments</a><br><br>
         <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.134.011801">First Joint Oscillation Analysis of Super-Kamiokande Atmospheric and T2K Accelerator Neutrino Data</a><br><br>
-        <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.051801">Neutrino-Induced Coherent 𝜋+ Production in C, CH, Fe, and Pb at ⟨𝐸𝜈⟩∼6  GeV*</a><br><br>
+        <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.051801">Neutrino-Induced Coherent 𝜋+ Production in C, CH, Fe, and Pb at ⟨𝐸𝜈⟩∼6  GeV*</a><br><br>
         <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.011801">Simultaneous Measurement of Muon Neutrino 𝜈𝜇 Charged-Current Single 𝜋+ Production in CH, C, H2⁡O, Fe, and Pb Targets in MINERvA</a><br><br>
         <a href="https://www.nature.com/articles/s41586-022-05478-3">Measurement of the axial vector form factor from antineutrino–proton scattering</a><br><br>
-        <!--
-        <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.130.161801">Phys. Rev. Lett. 130, 161801</a><br><br>
-        <a href="https://www.sciencedirect.com/science/article/pii/S0370269323001776?via%3Dihub">Phys. Lett. B (2023)</a><br><br><br><br><br>
-        <a href="https://link.springer.com/article/10.1140/epjc/s10052-023-11819-x">Eur. Phys. J. C 83, 782 (2023)</a><br><br>
-        <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.134.011801">Phys. Rev. Lett. 134, 011801 (2025)</a><br><br>
-        <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.051801">Phys. Rev. Lett. 131, 051801 (2023)*</a><br><br>
-        <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.011801">Phys. Rev. Lett. 131, 011801 (2023)</a><br><br>
-        <a href="https://www.nature.com/articles/s41586-022-05478-3">Nature volume 614, pages 48–53 (2023)</a><br><br>
-        -->
-        <h2 style="color: green; font-size: 1.25em;">Talking About Particle Physics</h2>
-        <a href="https://indico.fnal.gov/event/55494/##1-first-direct-measurement-of">Joint Experimental-Theoretical Physics Seminar (FNAL's Wine & Cheese), 2022</a><br><br>
+        <h2 style="color: #4ade80; font-size: 1.25em;">Talking About Particle Physics</h2>
+        <a href="https://indico.fnal.gov/event/55494/#1-first-direct-measurement-of">Joint Experimental-Theoretical Physics Seminar (FNAL's Wine & Cheese), 2022</a><br><br>
         <a href="https://agenda.hep.wisc.edu/event/1644/contributions/26244/">14th Conference on the Intersections of Particle and Nuclear Physics, 2022</a><br><br>
         <a href="https://indico.cern.ch/event/1339557/contributions/5898508/">20th International Conference on Calorimetry in Particle Physics, 2024</a><br><br>
-        <a href="http://vietnam.in2p3.fr/2024/PASCOS/prg2024_schedule_Parallel_3.php##W2P4">29th International Symposium on Particles, String and Cosmology, 2024</a><br><br>
+        <a href="http://vietnam.in2p3.fr/2024/PASCOS/prg2024_schedule_Parallel_3.php#W2P4">29th International Symposium on Particles, String and Cosmology, 2024</a><br><br>
         <a href="https://agenda.hep.wisc.edu/event/2257/contributions/34392/">15th Conference on the Intersections of Particle and Nuclear Physics, 2025</a><br><br>
     </div>
 </div>
+
+<script>
+    const bgContainer = document.getElementById('particle-bg');
+    const boxes = document.querySelectorAll('.scintillator-box');
+
+    // Random generator for realistic Poisson-like cosmic ray spawns
+    function spawnDownwardParticle() {
+        const particle = document.createElement('div');
+        particle.className = 'particle-down-dynamic';
+        
+        // Random horizontal position spanning entire viewport (0 - 100vw)
+        const randomX = Math.random() * 100;
+        particle.style.left = `${randomX}vw`;
+
+        bgContainer.appendChild(particle);
+
+        // Constant physical speed: ~3.0 seconds traversal time
+        const duration = 3000;
+        const startTime = performance.now();
+
+        function animate(now) {
+            const elapsed = now - startTime;
+            const progress = elapsed / duration;
+
+            if (progress < 1) {
+                // Linear downward travel across viewport
+                const currentY = progress * 125; // vh
+                particle.style.transform = `translateY(${currentY}vh)`;
+
+                // Collision detection with scintillator boxes
+                const pRect = particle.getBoundingClientRect();
+
+                boxes.forEach(box => {
+                    const boxRect = box.getBoundingClientRect();
+                    const boxType = box.getAttribute('data-box-type');
+                    const activeClass = boxType === 'center' ? 'scintillate-center' : 'scintillate-side';
+
+                    // Detect hit when particle enters top section of box
+                    const isHitting = pRect.bottom >= boxRect.top && 
+                                      pRect.top <= boxRect.bottom &&
+                                      pRect.left < boxRect.right && 
+                                      pRect.right > boxRect.left;
+
+                    if (isHitting && !box.dataset[`hit_${particle.id}`]) {
+                        box.dataset[`hit_${particle.id}`] = 'true';
+                        box.classList.add(activeClass);
+
+                        // Flash duration (120ms)
+                        setTimeout(() => {
+                            box.classList.remove(activeClass);
+                        }, 120);
+                    }
+                });
+
+                requestAnimationFrame(animate);
+            } else {
+                particle.remove();
+            }
+        }
+
+        particle.id = 'p_' + Math.random().toString(36).substr(2, 9);
+        requestAnimationFrame(animate);
+
+        // Random Poisson delay before next cosmic ray spawn (2.5s - 6.5s)
+        const nextSpawnDelay = 5000 + Math.random() * 8000;
+        setTimeout(spawnDownwardParticle, nextSpawnDelay);
+    }
+
+    // Start particle generator engine
+    spawnDownwardParticle();
+</script>
+
 </body>
 </html>
